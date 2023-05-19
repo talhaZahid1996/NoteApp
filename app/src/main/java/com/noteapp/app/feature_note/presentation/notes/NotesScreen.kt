@@ -17,16 +17,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.SnackbarResult
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.rememberScaffoldState
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -52,8 +51,8 @@ fun NotesScreen(
         floatingActionButton = {
             androidx.compose.material.FloatingActionButton(
                 onClick = {
-                          navController.navigate(Screen.AddEditNoteScreen.route)
-                }, backgroundColor = MaterialTheme.colorScheme.primary
+                    navController.navigate(Screen.AddEditNoteScreen.route)
+                }, backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
             }
@@ -70,7 +69,7 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note", style = MaterialTheme.typography.headlineMedium
+                    text = "Your note", style = MaterialTheme.typography.h4
                 )
                 IconButton(onClick = {
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
@@ -99,10 +98,10 @@ fun NotesScreen(
                     NoteItem(note = note, modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-                                   navController.navigate(
-                                       Screen.AddEditNoteScreen.route +
-                                               "?noteId=${note.id}&noteColor=${note.color}"
-                                   )
+                            navController.navigate(
+                                Screen.AddEditNoteScreen.route +
+                                        "?noteId=${note.id}&noteColor=${note.color}"
+                            )
                         }, onDeleteClick = {
                         viewModel.onEvent(NotesEvent.DeleteNote(note))
                         scope.launch {
