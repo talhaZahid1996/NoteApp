@@ -25,6 +25,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Sort
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -75,7 +76,7 @@ fun NotesScreen(
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
                 }) {
                     Icon(
-                        imageVector = Icons.Default.Search, contentDescription = "sort"
+                        imageVector = Icons.Default.Sort, contentDescription = "sort"
                     )
                 }
             }
