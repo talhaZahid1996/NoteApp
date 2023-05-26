@@ -31,9 +31,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.noteapp.app.core.TestTags.ORDER_SECTION
 import com.noteapp.app.feature_note.presentation.notes.components.NoteItem
 import com.noteapp.app.feature_note.presentation.notes.components.OrderSection
 import com.noteapp.app.feature_note.presentation.util.Screen
@@ -76,7 +78,7 @@ fun NotesScreen(
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
                 }) {
                     Icon(
-                        imageVector = Icons.Default.Sort, contentDescription = "sort"
+                        imageVector = Icons.Default.Sort, contentDescription = "Sort"
                     )
                 }
             }
@@ -87,7 +89,8 @@ fun NotesScreen(
             ) {
                 OrderSection(modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 16.dp),
+                    .padding(vertical = 16.dp)
+                    .testTag(ORDER_SECTION),
                     noteOrder = state.noteOrder,
                     onOrderChanged = {
                         viewModel.onEvent(NotesEvent.Order(it))
